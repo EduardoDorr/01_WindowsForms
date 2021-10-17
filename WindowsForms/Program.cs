@@ -15,7 +15,9 @@ namespace WindowsForms {
       Application.SetCompatibleTextRenderingDefault(false);
       //Application.Run(new frmHelloWorld());
       //Application.Run(new DemonstracaoKey());
-      Application.Run(new ValidatePassword());
+      //Application.Run(new ValidatePassword());
+      //Application.Run(new Mask());
+      Application.Run(new ValidateCPF());
     }
   }
 }
