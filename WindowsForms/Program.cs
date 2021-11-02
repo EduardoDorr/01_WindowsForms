@@ -13,11 +13,13 @@ namespace WindowsForms {
     static void Main() {
       Application.EnableVisualStyles();
       Application.SetCompatibleTextRenderingDefault(false);
-      //Application.Run(new frmHelloWorld());
+      //Application.Run(new HelloWorld());
       //Application.Run(new DemonstracaoKey());
       //Application.Run(new ValidatePassword());
       //Application.Run(new Mask());
-      Application.Run(new ValidateCPF());
+      //Application.Run(new ValidateCPF());
+      //Application.Run(new ValidateCPF2());
+      Application.Run(new Main());
     }
   }
 }

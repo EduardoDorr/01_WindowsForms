@@ -1,6 +1,6 @@
 ﻿
 namespace WindowsForms {
-  partial class frmHelloWorld {
+  partial class HelloWorld {
     /// <summary>
     /// Variável de designer necessária.
     /// </summary>
@@ -24,6 +24,7 @@ namespace WindowsForms {
     /// o conteúdo deste método com o editor de código.
     /// </summary>
     private void InitializeComponent() {
+      System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HelloWorld));
       this.lblTitle = new System.Windows.Forms.Label();
       this.btnExit = new System.Windows.Forms.Button();
       this.btnChangeLabel = new System.Windows.Forms.Button();
@@ -67,7 +68,7 @@ namespace WindowsForms {
       this.txtContent.Size = new System.Drawing.Size(437, 20);
       this.txtContent.TabIndex = 3;
       // 
-      // frmHelloWorld
+      // HelloWorld
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -76,7 +77,8 @@ namespace WindowsForms {
       this.Controls.Add(this.btnChangeLabel);
       this.Controls.Add(this.btnExit);
       this.Controls.Add(this.lblTitle);
-      this.Name = "frmHelloWorld";
+      this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+      this.Name = "HelloWorld";
       this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
       this.Text = "Hello World!";
       this.ResumeLayout(false);

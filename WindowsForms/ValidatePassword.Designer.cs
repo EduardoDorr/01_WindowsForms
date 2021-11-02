@@ -24,6 +24,7 @@ namespace WindowsForms {
     /// the contents of this method with the code editor.
     /// </summary>
     private void InitializeComponent() {
+      System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ValidatePassword));
       this.txtPassword = new System.Windows.Forms.TextBox();
       this.lblResult = new System.Windows.Forms.Label();
       this.btnReset = new System.Windows.Forms.Button();
@@ -77,6 +78,7 @@ namespace WindowsForms {
       this.Controls.Add(this.btnReset);
       this.Controls.Add(this.lblResult);
       this.Controls.Add(this.txtPassword);
+      this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
       this.Name = "ValidatePassword";
       this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
       this.Text = "Validação de Senhas";

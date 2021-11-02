@@ -24,6 +24,7 @@ namespace WindowsForms {
     /// the contents of this method with the code editor.
     /// </summary>
     private void InitializeComponent() {
+      System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DemonstracaoKey));
       this.txtInput = new System.Windows.Forms.TextBox();
       this.txtMsg = new System.Windows.Forms.TextBox();
       this.btnReset = new System.Windows.Forms.Button();
@@ -107,6 +108,7 @@ namespace WindowsForms {
       this.Controls.Add(this.btnReset);
       this.Controls.Add(this.txtMsg);
       this.Controls.Add(this.txtInput);
+      this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
       this.Name = "DemonstracaoKey";
       this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
       this.Text = "Demonstração Evento Key";

@@ -9,13 +9,13 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace WindowsForms {
-  public partial class frmHelloWorld : Form {
-    public frmHelloWorld() {
+  public partial class HelloWorld : Form {
+    public HelloWorld() {
       InitializeComponent();
     }
 
     private void btnExit_Click(object sender, EventArgs e) {
-      Application.Exit();
+      this.Close();
     }
 
     private void btnChangeLabel_Click(object sender, EventArgs e) {

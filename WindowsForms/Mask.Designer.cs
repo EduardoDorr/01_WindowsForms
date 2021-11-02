@@ -24,6 +24,7 @@ namespace WindowsForms {
     /// the contents of this method with the code editor.
     /// </summary>
     private void InitializeComponent() {
+      System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Mask));
       this.mskTextBox = new System.Windows.Forms.MaskedTextBox();
       this.lblContent = new System.Windows.Forms.Label();
       this.lblActiveMask = new System.Windows.Forms.Label();
@@ -147,6 +148,7 @@ namespace WindowsForms {
       this.Controls.Add(this.lblActiveMask);
       this.Controls.Add(this.lblContent);
       this.Controls.Add(this.mskTextBox);
+      this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
       this.Name = "Mask";
       this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
       this.Text = "Exemplos de Máscaras";
