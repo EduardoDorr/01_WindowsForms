@@ -27,6 +27,7 @@ namespace WindowsForms {
       tlsMain.Items[4].ToolTipText = "Limpa os dados na tela";
 
       grbID.Text = "ID Cliente";
+      btnSearch.Text = "Buscar";
 
       grbPersonalData.Text = "Dados Pessoais";
       lblCustomerName.Text = "Nome";
@@ -84,49 +85,15 @@ namespace WindowsForms {
       cmbStates.Items.Add("Tocantins (TO)");
     }
 
-    private void chkHasFather_CheckedChanged(object sender, EventArgs e) {
-      if (chkHasFather.Checked) {
-        txtFatherName.Enabled = true;
-      }
-      else {
-        txtFatherName.Enabled = false;
-      }
-    }
-
     private void newToolStripButton_Click(object sender, EventArgs e) {
+      var dir = "C:\\Users\\edudo\\Desktop\\Alura\\WindowsForm\\Publish\\DBFiles";
+
       try {
         Client.Unit C = new Client.Unit();
-        C = TestForm();
+        C = ReadFromForm();
         C.ValidateClass();
         C.ValidateComplement();
-
-        string vJSON = Client.SerializedClassUnit(C);
-
-        DBFiles DB = new DBFiles("C:\\Users\\edudo\\Desktop\\Alura\\WindowsForm\\Publish\\DBFiles");
-
-        if (DB.status) {
-          MessageBox.Show("OK: " + DB.message,
-                          "Mensagem",
-                          MessageBoxButtons.OK,
-                          MessageBoxIcon.Information);
-        }
-        else {
-          MessageBox.Show("ERRO: " + DB.message,
-                          "Mensagem",
-                          MessageBoxButtons.OK,
-                          MessageBoxIcon.Error);
-        }
-
-        MessageBox.Show("Usuário cadastrado na base de dados!",
-                        "Mensagem",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Information);
-      }
-      catch (ValidationException ex) {
-        MessageBox.Show(ex.Message,
-                        "Mensagem",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
+        C.AddFile(dir);
       }
       catch (Exception ex) {
         MessageBox.Show(ex.Message,
@@ -134,18 +101,205 @@ namespace WindowsForms {
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Error);
       }
+
+      #region Old
+      //string vJSON = Client.SerializedClassUnit(C);
+
+      //DBFiles DB = new DBFiles("C:\\Users\\edudo\\Desktop\\Alura\\WindowsForm\\Publish\\DBFiles");
+
+      //if (DB.status) {
+      //  DB.Add(C._ID, vJSON);
+
+      //  if (DB.status) {
+      //    MessageBox.Show("OK: " + DB.message,
+      //                    "Mensagem",
+      //                    MessageBoxButtons.OK,
+      //                    MessageBoxIcon.Information);
+      //  }
+      //  else {
+      //    MessageBox.Show("ERRO: " + DB.message,
+      //                    "Mensagem",
+      //                    MessageBoxButtons.OK,
+      //                    MessageBoxIcon.Error);
+      //  }
+      //}
+      //else {
+      //  MessageBox.Show("ERRO: " + DB.message,
+      //                  "Mensagem",
+      //                  MessageBoxButtons.OK,
+      //                  MessageBoxIcon.Error);
+      //}
+      #endregion
     }
 
     private void openToolStripButton_Click(object sender, EventArgs e) {
+      var id = txtID.Text;
+      var dir = "C:\\Users\\edudo\\Desktop\\Alura\\WindowsForm\\Publish\\DBFiles";
 
+      if (txtID.Text == "") {
+        MessageBox.Show("ERRO: ID está vazio!",
+                        "Mensagem",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
+      }
+      else {
+        try {
+          Client.Unit C = new Client.Unit();
+          C = C.SearchFile(id, dir);
+          WriteToForm(C);
+        }
+        catch (Exception ex) {
+          MessageBox.Show(ex.Message,
+                          "Mensagem",
+                          MessageBoxButtons.OK,
+                          MessageBoxIcon.Error);
+        }
+      }
+
+      #region Old
+      //DBFiles DB = new DBFiles("C:\\Users\\edudo\\Desktop\\Alura\\WindowsForm\\Publish\\DBFiles");
+
+      //if (DB.status) {
+      //  string vJSON = DB.Search(txtID.Text);
+
+      //  if (DB.status) {
+      //    WriteToForm(vJSON);
+      //  }
+      //  else {
+      //    MessageBox.Show("ERRO: " + DB.message,
+      //                    "Mensagem",
+      //                    MessageBoxButtons.OK,
+      //                    MessageBoxIcon.Error);
+      //  }
+      //}
+      //else {
+      //  MessageBox.Show("ERRO: " + DB.message,
+      //                  "Mensagem",
+      //                  MessageBoxButtons.OK,
+      //                  MessageBoxIcon.Error);
+      //}
+      #endregion;
     }
 
     private void saveToolStripButton_Click(object sender, EventArgs e) {
+      var dir = "C:\\Users\\edudo\\Desktop\\Alura\\WindowsForm\\Publish\\DBFiles";
 
+      try {
+        Client.Unit C = new Client.Unit();
+        C = ReadFromForm();
+        C.ValidateClass();
+        C.ValidateComplement();
+        C.EditFile(dir);
+      }
+      catch (Exception ex) {
+        MessageBox.Show(ex.Message,
+                        "Mensagem",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+      }
+
+      #region Old
+      //string vJSON = Client.SerializedClassUnit(C);
+      //DBFiles DB = new DBFiles("C:\\Users\\edudo\\Desktop\\Alura\\WindowsForm\\Publish\\DBFiles");
+
+      //if (DB.status) {
+      //  DB.Edit(C._ID, vJSON);
+
+      //  if (DB.status) {
+      //    MessageBox.Show("OK: " + DB.message,
+      //                    "Mensagem",
+      //                    MessageBoxButtons.OK,
+      //                    MessageBoxIcon.Information);
+      //  }
+      //  else {
+      //    MessageBox.Show("ERRO: " + DB.message,
+      //                    "Mensagem",
+      //                    MessageBoxButtons.OK,
+      //                    MessageBoxIcon.Error);
+      //  }
+      //}
+      //else {
+      //  MessageBox.Show("ERRO: " + DB.message,
+      //                  "Mensagem",
+      //                  MessageBoxButtons.OK,
+      //                  MessageBoxIcon.Error);
+      //}
+      #endregion
     }
 
     private void deleteToolStripButton_Click(object sender, EventArgs e) {
+      var id = txtID.Text;
+      var dir = "C:\\Users\\edudo\\Desktop\\Alura\\WindowsForm\\Publish\\DBFiles";
 
+      if (id == "") {
+        MessageBox.Show("ERRO: ID está vazio!",
+                        "Mensagem",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
+      }
+      else {
+        try {
+          Client.Unit C = new Client.Unit();
+          C = C.SearchFile(id, dir);
+          WriteToForm(C);
+
+          Question Db = new Question("imgQuestion", "Tem certeza?");
+          Db.ShowDialog();
+
+          var dialBox = Db.DialogResult;
+
+          if (dialBox == DialogResult.Yes) {
+            C.DeleteFile(dir);
+            CleanForm();
+          }
+        }
+        catch (Exception ex) {
+          MessageBox.Show(ex.Message,
+                          "Mensagem",
+                          MessageBoxButtons.OK,
+                          MessageBoxIcon.Error);
+        }
+      }
+
+      #region Old
+      //DBFiles DB = new DBFiles("C:\\Users\\edudo\\Desktop\\Alura\\WindowsForm\\Publish\\DBFiles");
+
+      //if (DB.status) {
+      //  string vJSON = DB.Search(txtID.Text);
+      //  Client.Unit C = Client.DesSerializedClassUnit(vJSON);
+      //  WriteToForm(C);
+
+      //  Question Db = new Question("imgQuestion", "Tem certeza?");
+      //  Db.ShowDialog();
+
+      //  var dialBox = Db.DialogResult;
+
+      //  if (dialBox == DialogResult.Yes) {
+      //    DB.Clear(txtID.Text);
+
+      //    if (DB.status) {
+      //      MessageBox.Show("OK: " + DB.message,
+      //                      "Mensagem",
+      //                      MessageBoxButtons.OK,
+      //                      MessageBoxIcon.Information);
+
+      //      CleanForm();
+      //    }
+      //    else {
+      //      MessageBox.Show("ERRO: " + DB.message,
+      //                      "Mensagem",
+      //                      MessageBoxButtons.OK,
+      //                      MessageBoxIcon.Error);
+      //    }
+      //  }
+      //}
+      //else {
+      //  MessageBox.Show("ERRO: " + DB.message,
+      //                  "Mensagem",
+      //                  MessageBoxButtons.OK,
+      //                  MessageBoxIcon.Error);
+      //}
+      #endregion
     }
 
     private void cleanToolStripButton_Click(object sender, EventArgs e) {
@@ -169,7 +323,7 @@ namespace WindowsForms {
 
             cmbStates.SelectedIndex = -1;
 
-            for (int i = 0; i < cmbStates.Items.Count - 1; i++) {
+            for (int i = 0; i <= cmbStates.Items.Count - 1; i++) {
               var vPOS = Strings.InStr(cmbStates.Items[i].ToString(), "(" + vCEP.uf + ")");
 
               if (vPOS > 0) {
@@ -181,7 +335,84 @@ namespace WindowsForms {
       }
     }
 
-    Client.Unit TestForm() {
+    private void chkHasFather_CheckedChanged(object sender, EventArgs e) {
+      if (chkHasFather.Checked) {
+        txtFatherName.Enabled = true;
+      }
+      else {
+        txtFatherName.Enabled = false;
+        txtFatherName.Text = "";
+      }
+    }
+    private void btnSearch_Click(object sender, EventArgs e) {
+      var dir = "C:\\Users\\edudo\\Desktop\\Alura\\WindowsForm\\Publish\\DBFiles";
+      try {
+        Client.Unit C = new Client.Unit();
+        List<string> listJSON = C.SearchAllFiles(dir);
+        List<List<string>> listComplete = new List<List<string>>();
+
+        for (int i = 0; i < listJSON.Count; i++) {
+          C = Client.DesSerializedClassUnit(listJSON[i]);
+          listComplete.Add(new List<string> { C._ID, C._Name });
+        }
+
+        Search F = new Search(listComplete);
+        F.ShowDialog();
+
+        if (F.DialogResult == DialogResult.OK) {
+          var idSelected = F._IDSelected;
+          C = C.SearchFile(idSelected, dir);
+          WriteToForm(C);
+        }
+      }
+      catch (Exception ex) {
+        MessageBox.Show(ex.Message,
+                        "Mensagem",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+      }
+
+      #region Old
+      //DBFiles DB = new DBFiles("C:\\Users\\edudo\\Desktop\\Alura\\WindowsForm\\Publish\\DBFiles");
+
+      //if (DB.status) {
+      //  List<string> listJSON = DB.SearchAll();
+
+      //  if (DB.status) {
+      //    List<List<string>> listComplete = new List<List<string>>();
+
+      //    for (int i = 0; i < listJSON.Count; i++) {
+      //      Client.Unit C = Client.DesSerializedClassUnit(listJSON[i]);
+      //      listComplete.Add(new List<string> { C._ID, C._Name });
+      //    }
+
+      //    Search F = new Search(listComplete);
+      //    F.ShowDialog();
+
+      //    if (F.DialogResult == DialogResult.OK) {
+      //      var idSelected = F._IDSelected;
+      //      string vJSON = DB.Search(idSelected);
+      //      Client.Unit C = Client.DesSerializedClassUnit(vJSON);
+      //      WriteToForm(C);
+      //    }
+      //  }
+      //  else {
+      //    MessageBox.Show("ERRO: " + DB.message,
+      //                    "Mensagem",
+      //                    MessageBoxButtons.OK,
+      //                    MessageBoxIcon.Error);
+      //  }
+      //}
+      //else {
+      //  MessageBox.Show("ERRO: " + DB.message,
+      //                  "Mensagem",
+      //                  MessageBoxButtons.OK,
+      //                  MessageBoxIcon.Error);
+      //}
+      #endregion
+    }
+
+    Client.Unit ReadFromForm() {
       Client.Unit C = new Client.Unit();
 
       //#############################################################
@@ -208,6 +439,7 @@ namespace WindowsForms {
         C._Gender = 2;
       }
       C._CPF = txtCPF.Text;
+      C._RG = txtRG.Text;
       //#############################################################
 
       //#############################################################
@@ -217,7 +449,6 @@ namespace WindowsForms {
       C._Complement = txtComplement.Text;
       C._District = txtDistrict.Text;
       C._City = txtCity.Text;
-      C._State = cmbStates.Text;
 
       if (cmbStates.SelectedIndex < 0) {
         C._State = "";
@@ -239,12 +470,69 @@ namespace WindowsForms {
           C._Income = 0;
         }
         else {
-          C._Income = 0;
+          C._Income = vRenda;
         }
       }
       //#############################################################
 
       return C;
+    }
+
+    private void WriteToForm(Client.Unit C) {
+      //#############################################################
+      // Personal Data
+      txtID.Text = C._ID;
+      txtCustomerName.Text = C._Name;
+      txtMotherName.Text = C._MotherName;
+
+      if (C._HasFather) {
+        chkHasFather.Checked = true;
+        txtFatherName.Text = C._FatherName;
+      }
+      else {
+        chkHasFather.Checked = false;
+        txtFatherName.Text = "";
+      }
+
+      if (C._Gender == 0) {
+        rdbMale.Checked = true;
+      }
+      if (C._Gender == 1) {
+        rdbFemale.Checked = true;
+      }
+      if (C._Gender == 2) {
+        rdbNoGender.Checked = true;
+      }
+      txtCPF.Text = C._CPF;
+      txtRG.Text = C._RG;
+      //#############################################################
+
+      //#############################################################
+      // Address
+      txtCEP.Text = C._CEP;
+      txtStreet.Text = C._Street;
+      txtComplement.Text = C._Complement;
+      txtDistrict.Text = C._District;
+      txtCity.Text = C._City;
+
+      if (C._State == "") {
+        cmbStates.SelectedIndex = -1;
+      }
+      else {
+        for (int i = 0; i <= cmbStates.Items.Count - 1; i++) {
+          if (C._State == cmbStates.Items[i].ToString()) {
+            cmbStates.SelectedIndex = i;
+          }
+        }
+      }
+      //#############################################################
+
+      //#############################################################
+      // Others
+      txtPhone.Text = C._Phone;
+      txtJob.Text = C._Job;
+      txtFamilyIncome.Text = C._Income.ToString();
+      //#############################################################
     }
 
     private void CleanForm() {
@@ -266,5 +554,6 @@ namespace WindowsForms {
       txtJob.Text = "";
       txtFamilyIncome.Text = "";
     }
+
   }
 }

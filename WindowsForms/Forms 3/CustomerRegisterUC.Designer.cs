@@ -71,6 +71,7 @@ namespace WindowsForms {
       this.saveToolStripButton = new System.Windows.Forms.ToolStripButton();
       this.deleteToolStripButton = new System.Windows.Forms.ToolStripButton();
       this.cleanToolStripButton = new System.Windows.Forms.ToolStripButton();
+      this.btnSearch = new System.Windows.Forms.Button();
       this.grbID.SuspendLayout();
       this.grbAddress.SuspendLayout();
       this.grbPersonalData.SuspendLayout();
@@ -85,7 +86,7 @@ namespace WindowsForms {
             | System.Windows.Forms.AnchorStyles.Right)));
       this.txtID.Location = new System.Drawing.Point(6, 19);
       this.txtID.Name = "txtID";
-      this.txtID.Size = new System.Drawing.Size(188, 20);
+      this.txtID.Size = new System.Drawing.Size(174, 20);
       this.txtID.TabIndex = 1;
       // 
       // txtPhone
@@ -140,10 +141,11 @@ namespace WindowsForms {
       // 
       // grbID
       // 
+      this.grbID.Controls.Add(this.btnSearch);
       this.grbID.Controls.Add(this.txtID);
       this.grbID.Location = new System.Drawing.Point(12, 28);
       this.grbID.Name = "grbID";
-      this.grbID.Size = new System.Drawing.Size(200, 51);
+      this.grbID.Size = new System.Drawing.Size(271, 51);
       this.grbID.TabIndex = 1;
       this.grbID.TabStop = false;
       this.grbID.Text = "ID";
@@ -511,6 +513,16 @@ namespace WindowsForms {
       this.cleanToolStripButton.Text = "&Limpar";
       this.cleanToolStripButton.Click += new System.EventHandler(this.cleanToolStripButton_Click);
       // 
+      // btnSearch
+      // 
+      this.btnSearch.Location = new System.Drawing.Point(186, 17);
+      this.btnSearch.Name = "btnSearch";
+      this.btnSearch.Size = new System.Drawing.Size(75, 24);
+      this.btnSearch.TabIndex = 2;
+      this.btnSearch.Text = "Buscar";
+      this.btnSearch.UseVisualStyleBackColor = true;
+      this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+      // 
       // CustomerRegisterUC
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -585,5 +597,6 @@ namespace WindowsForms {
     private System.Windows.Forms.ToolStripButton saveToolStripButton;
     private System.Windows.Forms.ToolStripButton deleteToolStripButton;
     private System.Windows.Forms.ToolStripButton cleanToolStripButton;
+    private System.Windows.Forms.Button btnSearch;
   }
 }

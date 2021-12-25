@@ -4,6 +4,8 @@ using System.Text;
 using System.ComponentModel.DataAnnotations;
 using WindowsForms;
 using Newtonsoft.Json;
+using WindowsFormsLibrary.Database;
+using System.Windows.Forms;
 
 namespace WindowsFormsLibrary.Classes {
   public class Client {
@@ -12,7 +14,7 @@ namespace WindowsFormsLibrary.Classes {
       [RegularExpression("[0-9]+", ErrorMessage = "Código do cliente deve ser numérico.")]
       [StringLength(6, MinimumLength = 6, ErrorMessage = "Código do cliente deve ter 6 dígitos.")]
       public string _ID { get; set; }
-      
+
       [Required(ErrorMessage = "Nome do cliente é obrigatório.")]
       [StringLength(50, ErrorMessage = "Nome do cliente deve ter no máximo 50 caracteres.")]
       public string _Name { get; set; }
@@ -23,13 +25,18 @@ namespace WindowsFormsLibrary.Classes {
 
       [StringLength(50, ErrorMessage = "Nome do pai deve ter no máximo 50 caracteres.")]
       public string _FatherName { get; set; }
-      
+
       public bool _HasFather { get; set; }
 
       [Required(ErrorMessage = "CPF do cliente é obrigatório.")]
       [RegularExpression("[0-9]+", ErrorMessage = "CPF do cliente deve ser numérico.")]
       [StringLength(11, MinimumLength = 11, ErrorMessage = "CPF do cliente deve ter 11 dígitos.")]
       public string _CPF { get; set; }
+
+      [Required(ErrorMessage = "RG do cliente é obrigatório.")]
+      [RegularExpression("[0-9]+", ErrorMessage = "RG do cliente deve ser numérico.")]
+      [StringLength(11, MinimumLength = 10, ErrorMessage = "RG do cliente deve ter 10 dígitos.")]
+      public string _RG { get; set; }
 
       [Required(ErrorMessage = "Gênero do cliente é obrigatório.")]
       public int _Gender { get; set; }
@@ -60,7 +67,7 @@ namespace WindowsFormsLibrary.Classes {
       public string _State { get; set; }
 
       [Required(ErrorMessage = "Telefone é obrigatório.")]
-      [StringLength(14, MinimumLength = 14, ErrorMessage = "Telefone deve ter no máximo 14 dígitos.")]
+      [RegularExpression("[0-9]+", ErrorMessage = "Telefone deve ser numérico.")]
       public string _Phone { get; set; }
 
       [Required(ErrorMessage = "Renda do cliente é obrigatória.")]
@@ -104,6 +111,111 @@ namespace WindowsFormsLibrary.Classes {
           throw new Exception("CPF é inválido.");
         }
       }
+
+      #region "File CRUD"
+      public void AddFile(string dir) {
+        string vJSON = Client.SerializedClassUnit(this);
+        DBFiles DB = new DBFiles(dir);
+
+        if (DB.status) {
+          DB.Add(this._ID, vJSON);
+
+          if (DB.status) {
+            MessageBox.Show("OK: " + DB.message,
+                            "Mensagem",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Information);
+          }
+          else {
+            throw new Exception(DB.message);
+          }
+        }
+        else {
+          throw new Exception(DB.message);
+        }
+      }
+
+      public Unit SearchFile(string id, string dir) {
+        DBFiles DB = new DBFiles(dir);
+
+        if (DB.status) {
+          string vJSON = DB.Search(id);
+
+          if (DB.status) {
+
+            return Client.DesSerializedClassUnit(vJSON);
+          }
+          else {
+            throw new Exception(DB.message);
+          }
+        }
+        else {
+          throw new Exception(DB.message);
+        }
+      }
+
+      public void EditFile(string dir) {
+        string vJSON = Client.SerializedClassUnit(this);
+        DBFiles DB = new DBFiles(dir);
+
+        if (DB.status) {
+          DB.Edit(this._ID, vJSON);
+
+          if (DB.status) {
+            MessageBox.Show("OK: " + DB.message,
+                            "Mensagem",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Information);
+          }
+          else {
+            throw new Exception(DB.message);
+          }
+        }
+        else {
+          throw new Exception(DB.message);
+        }
+      }
+
+      public void DeleteFile(string dir) {
+        DBFiles DB = new DBFiles(dir);
+
+        if (DB.status) {
+          DB.Clear(this._ID);
+
+          if (DB.status) {
+            MessageBox.Show("OK: " + DB.message,
+                            "Mensagem",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Information);
+          }
+          else {
+            throw new Exception(DB.message);
+          }
+        }
+        else {
+          throw new Exception(DB.message);
+        }
+      }
+
+      public List<string> SearchAllFiles(string dir) {
+        DBFiles DB = new DBFiles(dir);
+
+        if (DB.status) {
+          List<string> listJSON = DB.SearchAll();
+
+          if (DB.status) {
+            return listJSON;
+          }
+          else {
+            throw new Exception(DB.message);
+          }
+        }
+        else {
+          throw new Exception(DB.message);
+        }
+      }
+
+      #endregion
     }
 
     public class List {

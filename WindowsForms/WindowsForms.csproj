@@ -201,6 +201,12 @@
     <Compile Include="Forms 2\ValidatePasswordUC.Designer.cs">
       <DependentUpon>ValidatePasswordUC.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms 5\Search.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms 5\Search.Designer.cs">
+      <DependentUpon>Search.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Forms 3\CustomerRegisterUC.resx">
       <DependentUpon>CustomerRegisterUC.cs</DependentUpon>
     </EmbeddedResource>
@@ -282,6 +288,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms 2\ValidatePasswordUC.resx">
       <DependentUpon>ValidatePasswordUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms 5\Search.resx">
+      <DependentUpon>Search.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
