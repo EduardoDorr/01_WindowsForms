@@ -36,6 +36,8 @@ namespace WindowsForms {
       // 
       // txtInput
       // 
+      this.txtInput.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
       this.txtInput.Location = new System.Drawing.Point(8, 8);
       this.txtInput.Name = "txtInput";
       this.txtInput.Size = new System.Drawing.Size(100, 20);
@@ -44,6 +46,9 @@ namespace WindowsForms {
       // 
       // txtMsg
       // 
+      this.txtMsg.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
       this.txtMsg.Location = new System.Drawing.Point(8, 40);
       this.txtMsg.Multiline = true;
       this.txtMsg.Name = "txtMsg";
@@ -54,6 +59,7 @@ namespace WindowsForms {
       // 
       // btnReset
       // 
+      this.btnReset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
       this.btnReset.Location = new System.Drawing.Point(328, 8);
       this.btnReset.Name = "btnReset";
       this.btnReset.Size = new System.Drawing.Size(75, 28);
@@ -64,6 +70,7 @@ namespace WindowsForms {
       // 
       // lblMinus
       // 
+      this.lblMinus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
       this.lblMinus.AutoSize = true;
       this.lblMinus.Location = new System.Drawing.Point(320, 104);
       this.lblMinus.Name = "lblMinus";
@@ -73,6 +80,7 @@ namespace WindowsForms {
       // 
       // lblMaius
       // 
+      this.lblMaius.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
       this.lblMaius.AutoSize = true;
       this.lblMaius.Location = new System.Drawing.Point(320, 56);
       this.lblMaius.Name = "lblMaius";
@@ -82,6 +90,7 @@ namespace WindowsForms {
       // 
       // lblUpper
       // 
+      this.lblUpper.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
       this.lblUpper.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
       this.lblUpper.Location = new System.Drawing.Point(368, 56);
       this.lblUpper.Name = "lblUpper";
@@ -90,6 +99,7 @@ namespace WindowsForms {
       // 
       // lblLower
       // 
+      this.lblLower.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
       this.lblLower.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
       this.lblLower.Location = new System.Drawing.Point(368, 104);
       this.lblLower.Name = "lblLower";
@@ -109,6 +119,7 @@ namespace WindowsForms {
       this.Controls.Add(this.txtMsg);
       this.Controls.Add(this.txtInput);
       this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+      this.MinimumSize = new System.Drawing.Size(425, 320);
       this.Name = "DemonstracaoKey";
       this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
       this.Text = "Demonstração Evento Key";

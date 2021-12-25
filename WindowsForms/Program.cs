@@ -19,7 +19,14 @@ namespace WindowsForms {
       //Application.Run(new Mask());
       //Application.Run(new ValidateCPF());
       //Application.Run(new ValidateCPF2());
-      Application.Run(new Main());
+      //Application.Run(new Main());
+      //Application.Run(new MainMenu());
+      //Application.Run(new MainMenuMDI());
+      Application.Run(new MainMenuUC());
+      //Application.Run(new MouseEvent());
+      //Application.Run(new MouseCapture());
+      //Application.Run(new MouseCursor());
+      //Application.Run(new FloatMenu());
     }
   }
 }

@@ -43,6 +43,7 @@ namespace WindowsForms {
       // 
       // btnExit
       // 
+      this.btnExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
       this.btnExit.Location = new System.Drawing.Point(374, 293);
       this.btnExit.Name = "btnExit";
       this.btnExit.Size = new System.Drawing.Size(75, 23);
@@ -63,6 +64,8 @@ namespace WindowsForms {
       // 
       // txtContent
       // 
+      this.txtContent.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
       this.txtContent.Location = new System.Drawing.Point(12, 84);
       this.txtContent.Name = "txtContent";
       this.txtContent.Size = new System.Drawing.Size(437, 20);
@@ -78,6 +81,7 @@ namespace WindowsForms {
       this.Controls.Add(this.btnExit);
       this.Controls.Add(this.lblTitle);
       this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+      this.MinimumSize = new System.Drawing.Size(477, 367);
       this.Name = "HelloWorld";
       this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
       this.Text = "Hello World!";

@@ -148,7 +148,9 @@ namespace WindowsForms {
       this.Controls.Add(this.lblActiveMask);
       this.Controls.Add(this.lblContent);
       this.Controls.Add(this.mskTextBox);
+      this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
       this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+      this.MaximizeBox = false;
       this.Name = "Mask";
       this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
       this.Text = "Exemplos de Máscaras";

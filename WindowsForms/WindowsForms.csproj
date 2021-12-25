@@ -8,7 +8,7 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>WindowsForms</RootNamespace>
     <AssemblyName>WindowsForms</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
@@ -37,10 +37,12 @@
     <StartupObject>WindowsForms.Program</StartupObject>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Frm_Principal.ico</ApplicationIcon>
+    <ApplicationIcon>Images\icoMain.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -53,18 +55,77 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ChecaForcaSenha.cs" />
-    <Compile Include="DemonstracaoKey.cs">
+    <Compile Include="Forms 3\CustomerRegisterUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms 3\CustomerRegisterUC.Designer.cs">
+      <DependentUpon>CustomerRegisterUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms 3\FloatMenu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DemonstracaoKey.Designer.cs">
+    <Compile Include="Forms 3\FloatMenu.Designer.cs">
+      <DependentUpon>FloatMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms 3\MouseCursor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms 3\MouseCursor.Designer.cs">
+      <DependentUpon>MouseCursor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms 3\MouseEvent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms 3\MouseEvent.Designer.cs">
+      <DependentUpon>MouseEvent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms 1\DemonstracaoKey.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms 1\DemonstracaoKey.Designer.cs">
       <DependentUpon>DemonstracaoKey.cs</DependentUpon>
     </Compile>
-    <Compile Include="HelloWorld.cs">
+    <Compile Include="Forms 1\HelloWorld.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="HelloWorld.Designer.cs">
+    <Compile Include="Forms 1\HelloWorld.Designer.cs">
       <DependentUpon>HelloWorld.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms 2\Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms 2\Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms 2\ImageFileUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms 2\ImageFileUC.Designer.cs">
+      <DependentUpon>ImageFileUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms 2\Question.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms 2\Question.Designer.cs">
+      <DependentUpon>Question.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms 2\MaskUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms 2\MaskUC.Designer.cs">
+      <DependentUpon>MaskUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms 2\DemonstracaoKeyUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms 2\DemonstracaoKeyUC.Designer.cs">
+      <DependentUpon>DemonstracaoKeyUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms 2\HelloWorldUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms 2\HelloWorldUC.Designer.cs">
+      <DependentUpon>HelloWorldUC.cs</DependentUpon>
     </Compile>
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
@@ -72,44 +133,127 @@
     <Compile Include="Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
-    <Compile Include="Mask.cs">
+    <Compile Include="Forms 1\Mask.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Mask.Designer.cs">
+    <Compile Include="Forms 1\Mask.Designer.cs">
       <DependentUpon>Mask.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainMenu.Designer.cs">
+      <DependentUpon>MainMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainMenuMDI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainMenuMDI.Designer.cs">
+      <DependentUpon>MainMenuMDI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainMenuUC.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainMenuUC.Designer.cs">
+      <DependentUpon>MainMenuUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms 3\MouseCapture.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms 3\MouseCapture.Designer.cs">
+      <DependentUpon>MouseCapture.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Utility.cs" />
-    <Compile Include="ValidateCPF.cs">
+    <Compile Include="Forms 1\ValidateCPF.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ValidateCPF.Designer.cs">
+    <Compile Include="Forms 1\ValidateCPF.Designer.cs">
       <DependentUpon>ValidateCPF.cs</DependentUpon>
     </Compile>
-    <Compile Include="ValidateCPF2.cs">
+    <Compile Include="Forms 1\ValidateCPF2.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ValidateCPF2.Designer.cs">
+    <Compile Include="Forms 1\ValidateCPF2.Designer.cs">
       <DependentUpon>ValidateCPF2.cs</DependentUpon>
     </Compile>
-    <Compile Include="ValidatePassword.cs">
+    <Compile Include="Forms 1\ValidatePassword.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ValidatePassword.Designer.cs">
+    <Compile Include="Forms 1\ValidatePassword.Designer.cs">
       <DependentUpon>ValidatePassword.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="DemonstracaoKey.resx">
+    <Compile Include="Forms 2\ValidateCPFUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms 2\ValidateCPFUC.Designer.cs">
+      <DependentUpon>ValidateCPFUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms 2\ValidateCPF2UC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms 2\ValidateCPF2UC.Designer.cs">
+      <DependentUpon>ValidateCPF2UC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms 2\ValidatePasswordUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms 2\ValidatePasswordUC.Designer.cs">
+      <DependentUpon>ValidatePasswordUC.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Forms 3\CustomerRegisterUC.resx">
+      <DependentUpon>CustomerRegisterUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms 3\FloatMenu.resx">
+      <DependentUpon>FloatMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms 3\MouseCapture.resx">
+      <DependentUpon>MouseCapture.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms 3\MouseCursor.resx">
+      <DependentUpon>MouseCursor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms 3\MouseEvent.resx">
+      <DependentUpon>MouseEvent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms 1\DemonstracaoKey.resx">
       <DependentUpon>DemonstracaoKey.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="HelloWorld.resx">
+    <EmbeddedResource Include="Forms 1\HelloWorld.resx">
       <DependentUpon>HelloWorld.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms 2\Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms 2\ImageFileUC.resx">
+      <DependentUpon>ImageFileUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms 2\Question.resx">
+      <DependentUpon>Question.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms 2\MaskUC.resx">
+      <DependentUpon>MaskUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms 2\DemonstracaoKeyUC.resx">
+      <DependentUpon>DemonstracaoKeyUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms 2\HelloWorldUC.resx">
+      <DependentUpon>HelloWorldUC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Mask.resx">
+    <EmbeddedResource Include="Forms 1\Mask.resx">
       <DependentUpon>Mask.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainMenu.resx">
+      <DependentUpon>MainMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainMenuMDI.resx">
+      <DependentUpon>MainMenuMDI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainMenuUC.resx">
+      <DependentUpon>MainMenuUC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -121,14 +265,23 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="ValidateCPF.resx">
+    <EmbeddedResource Include="Forms 1\ValidateCPF.resx">
       <DependentUpon>ValidateCPF.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ValidateCPF2.resx">
+    <EmbeddedResource Include="Forms 1\ValidateCPF2.resx">
       <DependentUpon>ValidateCPF2.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ValidatePassword.resx">
+    <EmbeddedResource Include="Forms 1\ValidatePassword.resx">
       <DependentUpon>ValidatePassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms 2\ValidateCPFUC.resx">
+      <DependentUpon>ValidateCPFUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms 2\ValidateCPF2UC.resx">
+      <DependentUpon>ValidateCPF2UC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms 2\ValidatePasswordUC.resx">
+      <DependentUpon>ValidatePasswordUC.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -144,7 +297,39 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Frm_Principal.ico" />
+    <Content Include="Images\icoDemonstracaoKey.ico" />
+    <Content Include="Images\imgCleanBar.png" />
+    <Content Include="Images\imgDeleteBar.png" />
+    <Content Include="Images\imgDemonstracaoKey.png" />
+    <Content Include="Images\icoHelloWorld.ico" />
+    <Content Include="Images\imgFolder.png" />
+    <Content Include="Images\imgHelloWorld.png" />
+    <Content Include="Images\icoQuestion.ico" />
+    <Content Include="Images\imgKey.png" />
+    <Content Include="Images\imgMoney.png" />
+    <Content Include="Images\imgQuestion.png" />
+    <Content Include="Images\icoMask.ico" />
+    <Content Include="Images\imgMask.png" />
+    <Content Include="Images\icoValidateCPF.ico" />
+    <Content Include="Images\imgRegister.png" />
+    <Content Include="Images\imgTabClose.png" />
+    <Content Include="Images\imgTabCloseAll.png" />
+    <Content Include="Images\imgTabCloseAllExcept.png" />
+    <Content Include="Images\imgTabCloseLeft.png" />
+    <Content Include="Images\imgTabCloseRight.png" />
+    <Content Include="Images\imgUser.png" />
+    <Content Include="Images\imgValidateCPF.png" />
+    <Content Include="Images\icoValidateCPF2.ico" />
+    <Content Include="Images\imgValidateCPF2.png" />
+    <Content Include="Images\icoValidatePassword.ico" />
+    <Content Include="Images\imgValidatePassword.png" />
+    <Content Include="Images\icoMain.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WindowsFormsLibrary\WindowsFormsLibrary.csproj">
+      <Project>{bc161caa-9850-4475-971e-a99514fdd8af}</Project>
+      <Name>WindowsFormsLibrary</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -33,6 +33,8 @@ namespace WindowsForms {
       // 
       // txtPassword
       // 
+      this.txtPassword.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
       this.txtPassword.Location = new System.Drawing.Point(12, 45);
       this.txtPassword.Name = "txtPassword";
       this.txtPassword.PasswordChar = '*';
@@ -42,6 +44,7 @@ namespace WindowsForms {
       // 
       // lblResult
       // 
+      this.lblResult.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
       this.lblResult.AutoSize = true;
       this.lblResult.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.lblResult.Location = new System.Drawing.Point(12, 90);
@@ -51,6 +54,7 @@ namespace WindowsForms {
       // 
       // btnReset
       // 
+      this.btnReset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
       this.btnReset.Location = new System.Drawing.Point(245, 42);
       this.btnReset.Name = "btnReset";
       this.btnReset.Size = new System.Drawing.Size(111, 23);
@@ -61,6 +65,7 @@ namespace WindowsForms {
       // 
       // bntShow
       // 
+      this.bntShow.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
       this.bntShow.Location = new System.Drawing.Point(245, 71);
       this.bntShow.Name = "bntShow";
       this.bntShow.Size = new System.Drawing.Size(111, 23);
@@ -79,6 +84,7 @@ namespace WindowsForms {
       this.Controls.Add(this.lblResult);
       this.Controls.Add(this.txtPassword);
       this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+      this.MinimumSize = new System.Drawing.Size(384, 193);
       this.Name = "ValidatePassword";
       this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
       this.Text = "Validação de Senhas";
