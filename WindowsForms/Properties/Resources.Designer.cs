@@ -63,6 +63,16 @@ namespace WindowsForms.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Icon semelhante a (Ícone).
         /// </summary>
+        internal static System.Drawing.Icon icoAgency {
+            get {
+                object obj = ResourceManager.GetObject("icoAgency", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Icon semelhante a (Ícone).
+        /// </summary>
         internal static System.Drawing.Icon icoDemonstracaoKey {
             get {
                 object obj = ResourceManager.GetObject("icoDemonstracaoKey", resourceCulture);
@@ -137,6 +147,16 @@ namespace WindowsForms.Properties {
             get {
                 object obj = ResourceManager.GetObject("icoValidatePassword", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap imgAgency {
+            get {
+                object obj = ResourceManager.GetObject("imgAgency", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         

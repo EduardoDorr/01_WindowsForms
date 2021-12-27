@@ -23,7 +23,7 @@ namespace WindowsForms {
       tlsMain.Items[0].ToolTipText = "Incluir na base de dados um novo cliente";
       tlsMain.Items[1].ToolTipText = "Carregar um cliente já existente";
       tlsMain.Items[2].ToolTipText = "Atualizar os dados de um cliente já existente";
-      tlsMain.Items[3].ToolTipText = "Apaga o cliente atual carregado da base de dados";
+      tlsMain.Items[3].ToolTipText = "Apaga o cliente selecionado da base de dados";
       tlsMain.Items[4].ToolTipText = "Limpa os dados na tela";
 
       grbID.Text = "ID Cliente";
@@ -86,14 +86,18 @@ namespace WindowsForms {
     }
 
     private void newToolStripButton_Click(object sender, EventArgs e) {
-      var dir = "C:\\Users\\edudo\\Desktop\\Alura\\WindowsForm\\Publish\\DBFiles";
+      //var connection = "C:\\Users\\edudo\\Desktop\\Alura\\WindowsForm\\Publish\\DBFiles";
+      var connection = "Client";
 
       try {
         Client.Unit C = new Client.Unit();
         C = ReadFromForm();
         C.ValidateClass();
         C.ValidateComplement();
-        C.AddFile(dir);
+        //C.AddFile(connection);
+        //C.AddFileDB(connection);
+        //C.AddFileNOSQL(connection);
+        C.AddFileSQL();
       }
       catch (Exception ex) {
         MessageBox.Show(ex.Message,
@@ -134,7 +138,8 @@ namespace WindowsForms {
 
     private void openToolStripButton_Click(object sender, EventArgs e) {
       var id = txtID.Text;
-      var dir = "C:\\Users\\edudo\\Desktop\\Alura\\WindowsForm\\Publish\\DBFiles";
+      //var connection = "C:\\Users\\edudo\\Desktop\\Alura\\WindowsForm\\Publish\\DBFiles";
+      var connection = "Client";
 
       if (txtID.Text == "") {
         MessageBox.Show("ERRO: ID está vazio!",
@@ -145,7 +150,10 @@ namespace WindowsForms {
       else {
         try {
           Client.Unit C = new Client.Unit();
-          C = C.SearchFile(id, dir);
+          //C = C.SearchFile(id, connection);
+          //C = C.SearchFileDB(id, connection);
+          //C = C.SearchFileNOSQL(id, connection);
+          C = C.SearchFileSQL(id);
           WriteToForm(C);
         }
         catch (Exception ex) {
@@ -182,14 +190,18 @@ namespace WindowsForms {
     }
 
     private void saveToolStripButton_Click(object sender, EventArgs e) {
-      var dir = "C:\\Users\\edudo\\Desktop\\Alura\\WindowsForm\\Publish\\DBFiles";
+      //var connection = "C:\\Users\\edudo\\Desktop\\Alura\\WindowsForm\\Publish\\DBFiles";
+      var connection = "Client";
 
       try {
         Client.Unit C = new Client.Unit();
         C = ReadFromForm();
         C.ValidateClass();
         C.ValidateComplement();
-        C.EditFile(dir);
+        //C.EditFile(connection);
+        //C.EditFileDB(connection);
+        //C.EditFileNOSQL(connection);
+        C.EditFileSQL();
       }
       catch (Exception ex) {
         MessageBox.Show(ex.Message,
@@ -229,7 +241,8 @@ namespace WindowsForms {
 
     private void deleteToolStripButton_Click(object sender, EventArgs e) {
       var id = txtID.Text;
-      var dir = "C:\\Users\\edudo\\Desktop\\Alura\\WindowsForm\\Publish\\DBFiles";
+      //var connection = "C:\\Users\\edudo\\Desktop\\Alura\\WindowsForm\\Publish\\DBFiles";
+      var connection = "Client";
 
       if (id == "") {
         MessageBox.Show("ERRO: ID está vazio!",
@@ -240,7 +253,10 @@ namespace WindowsForms {
       else {
         try {
           Client.Unit C = new Client.Unit();
-          C = C.SearchFile(id, dir);
+          //C = C.SearchFile(id, connection);
+          //C = C.SearchFileDB(id, connection);
+          //C = C.SearchFileNOSQL(id, connection);
+          C = C.SearchFileSQL(id);
           WriteToForm(C);
 
           Question Db = new Question("imgQuestion", "Tem certeza?");
@@ -249,7 +265,10 @@ namespace WindowsForms {
           var dialBox = Db.DialogResult;
 
           if (dialBox == DialogResult.Yes) {
-            C.DeleteFile(dir);
+            //C.DeleteFile(connection);
+            //C.DeleteFileDB(connection);
+            //C.DeleteFileNOSQL(connection);
+            C.DeleteFileSQL();
             CleanForm();
           }
         }
@@ -306,62 +325,26 @@ namespace WindowsForms {
       CleanForm();
     }
     
-    private void txtCEP_Leave(object sender, EventArgs e) {
-      var cep = txtCEP.Text;
-
-      if (cep != "") {
-        if (cep.Length == 8) {
-          if (Information.IsNumeric(cep)) {
-            var vJSON = Utility.GenerateJSONCEP(txtCEP.Text);
-
-            CEP.Unit vCEP = new CEP.Unit();
-            vCEP = CEP.DesSerializedClassUnit(vJSON);
-
-            txtStreet.Text = vCEP.logradouro;
-            txtDistrict.Text = vCEP.bairro;
-            txtCity.Text = vCEP.localidade;
-
-            cmbStates.SelectedIndex = -1;
-
-            for (int i = 0; i <= cmbStates.Items.Count - 1; i++) {
-              var vPOS = Strings.InStr(cmbStates.Items[i].ToString(), "(" + vCEP.uf + ")");
-
-              if (vPOS > 0) {
-                cmbStates.SelectedIndex = i;
-              }
-            }
-          }
-        }
-      }
-    }
-
-    private void chkHasFather_CheckedChanged(object sender, EventArgs e) {
-      if (chkHasFather.Checked) {
-        txtFatherName.Enabled = true;
-      }
-      else {
-        txtFatherName.Enabled = false;
-        txtFatherName.Text = "";
-      }
-    }
     private void btnSearch_Click(object sender, EventArgs e) {
-      var dir = "C:\\Users\\edudo\\Desktop\\Alura\\WindowsForm\\Publish\\DBFiles";
+      //var conection = "C:\\Users\\edudo\\Desktop\\Alura\\WindowsForm\\Publish\\DBFiles";
+      var conection = "Client";
+
       try {
         Client.Unit C = new Client.Unit();
-        List<string> listJSON = C.SearchAllFiles(dir);
-        List<List<string>> listComplete = new List<List<string>>();
-
-        for (int i = 0; i < listJSON.Count; i++) {
-          C = Client.DesSerializedClassUnit(listJSON[i]);
-          listComplete.Add(new List<string> { C._ID, C._Name });
-        }
+        //var listComplete = C.SearchAllFiles(conection);
+        //var listComplete = C.SearchAllFileDB(conection);
+        //var listComplete = C.SearchAllFileNOSQL(conection);
+        var listComplete = C.SearchAllFileSQL();
 
         Search F = new Search(listComplete);
         F.ShowDialog();
 
         if (F.DialogResult == DialogResult.OK) {
           var idSelected = F._IDSelected;
-          C = C.SearchFile(idSelected, dir);
+          //C = C.SearchFile(idSelected, conection);
+          //C = C.SearchFileDB(idSelected, conection);
+          //C = C.SearchFileNOSQL(idSelected, conection);
+          C = C.SearchFileSQL(idSelected);
           WriteToForm(C);
         }
       }
@@ -411,66 +394,105 @@ namespace WindowsForms {
       //}
       #endregion
     }
+    
+    private void txtCEP_Leave(object sender, EventArgs e) {
+      var cep = txtCEP.Text;
+
+      if (cep != "") {
+        if (cep.Length == 8) {
+          if (Information.IsNumeric(cep)) {
+            var vJSON = Utility.GenerateJSONCEP(txtCEP.Text);
+
+            CEP.Unit vCEP = new CEP.Unit();
+            vCEP = CEP.DesSerializedClassUnit(vJSON);
+
+            txtStreet.Text = vCEP.logradouro;
+            txtDistrict.Text = vCEP.bairro;
+            txtCity.Text = vCEP.localidade;
+
+            cmbStates.SelectedIndex = -1;
+
+            for (int i = 0; i <= cmbStates.Items.Count - 1; i++) {
+              var vPOS = Strings.InStr(cmbStates.Items[i].ToString(), "(" + vCEP.uf + ")");
+
+              if (vPOS > 0) {
+                cmbStates.SelectedIndex = i;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    private void chkHasFather_CheckedChanged(object sender, EventArgs e) {
+      if (chkHasFather.Checked) {
+        txtFatherName.Enabled = true;
+      }
+      else {
+        txtFatherName.Enabled = false;
+        txtFatherName.Text = "";
+      }
+    }
 
     Client.Unit ReadFromForm() {
       Client.Unit C = new Client.Unit();
 
       //#############################################################
       // Personal Data
-      C._ID = txtID.Text;
-      C._Name = txtCustomerName.Text;
-      C._MotherName = txtMotherName.Text;
-      C._FatherName = txtFatherName.Text;
+      C.ID = txtID.Text;
+      C.Name = txtCustomerName.Text;
+      C.MotherName = txtMotherName.Text;
+      C.FatherName = txtFatherName.Text;
       
       if (chkHasFather.Checked) {
-        C._HasFather = true;
+        C.HasFather = 1;
       }
       else {
-        C._HasFather = false;
+        C.HasFather = 0;
       }
 
       if (rdbMale.Checked) {
-        C._Gender = 0;
+        C.Gender = 0;
       }
       if (rdbFemale.Checked) {
-        C._Gender = 1;
+        C.Gender = 1;
       }
       if (rdbNoGender.Checked) {
-        C._Gender = 2;
+        C.Gender = 2;
       }
-      C._CPF = txtCPF.Text;
-      C._RG = txtRG.Text;
+      C.CPF = txtCPF.Text;
+      C.RG = txtRG.Text;
       //#############################################################
 
       //#############################################################
       // Address
-      C._CEP = txtCEP.Text;
-      C._Street = txtStreet.Text;
-      C._Complement = txtComplement.Text;
-      C._District = txtDistrict.Text;
-      C._City = txtCity.Text;
+      C.CEP = txtCEP.Text;
+      C.Street = txtStreet.Text;
+      C.Complement = txtComplement.Text;
+      C.District = txtDistrict.Text;
+      C.City = txtCity.Text;
 
       if (cmbStates.SelectedIndex < 0) {
-        C._State = "";
+        C.State = "";
       }
       else {
-        C._State = cmbStates.Items[cmbStates.SelectedIndex].ToString();
+        C.State = cmbStates.Items[cmbStates.SelectedIndex].ToString();
       }
       //#############################################################
 
       //#############################################################
       // Others
-      C._Phone = txtPhone.Text;
-      C._Job = txtJob.Text;
+      C.Phone = txtPhone.Text;
+      C.Job = txtJob.Text;
 
       if (Information.IsNumeric(txtFamilyIncome.Text)) {
         Double vRenda = Convert.ToDouble(txtFamilyIncome.Text);
 
         if (vRenda < 0) {
-          C._Income = 0;
+          C.Income = 0;
         }
         else {
-          C._Income = vRenda;
+          C.Income = vRenda;
         }
       }
       //#############################################################
@@ -481,46 +503,46 @@ namespace WindowsForms {
     private void WriteToForm(Client.Unit C) {
       //#############################################################
       // Personal Data
-      txtID.Text = C._ID;
-      txtCustomerName.Text = C._Name;
-      txtMotherName.Text = C._MotherName;
+      txtID.Text = C.ID;
+      txtCustomerName.Text = C.Name;
+      txtMotherName.Text = C.MotherName;
 
-      if (C._HasFather) {
+      if (C.HasFather == 1) {
         chkHasFather.Checked = true;
-        txtFatherName.Text = C._FatherName;
+        txtFatherName.Text = C.FatherName;
       }
       else {
         chkHasFather.Checked = false;
         txtFatherName.Text = "";
       }
 
-      if (C._Gender == 0) {
+      if (C.Gender == 0) {
         rdbMale.Checked = true;
       }
-      if (C._Gender == 1) {
+      if (C.Gender == 1) {
         rdbFemale.Checked = true;
       }
-      if (C._Gender == 2) {
+      if (C.Gender == 2) {
         rdbNoGender.Checked = true;
       }
-      txtCPF.Text = C._CPF;
-      txtRG.Text = C._RG;
+      txtCPF.Text = C.CPF;
+      txtRG.Text = C.RG;
       //#############################################################
 
       //#############################################################
       // Address
-      txtCEP.Text = C._CEP;
-      txtStreet.Text = C._Street;
-      txtComplement.Text = C._Complement;
-      txtDistrict.Text = C._District;
-      txtCity.Text = C._City;
+      txtCEP.Text = C.CEP;
+      txtStreet.Text = C.Street;
+      txtComplement.Text = C.Complement;
+      txtDistrict.Text = C.District;
+      txtCity.Text = C.City;
 
-      if (C._State == "") {
+      if (C.State == "") {
         cmbStates.SelectedIndex = -1;
       }
       else {
         for (int i = 0; i <= cmbStates.Items.Count - 1; i++) {
-          if (C._State == cmbStates.Items[i].ToString()) {
+          if (C.State == cmbStates.Items[i].ToString()) {
             cmbStates.SelectedIndex = i;
           }
         }
@@ -529,9 +551,9 @@ namespace WindowsForms {
 
       //#############################################################
       // Others
-      txtPhone.Text = C._Phone;
-      txtJob.Text = C._Job;
-      txtFamilyIncome.Text = C._Income.ToString();
+      txtPhone.Text = C.Phone;
+      txtJob.Text = C.Job;
+      txtFamilyIncome.Text = C.Income.ToString();
       //#############################################################
     }
 

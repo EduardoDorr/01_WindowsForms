@@ -55,6 +55,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Agency.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Agency.Designer.cs">
+      <DependentUpon>Agency.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms 3\CustomerRegisterUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -207,6 +213,9 @@
     <Compile Include="Forms 5\Search.Designer.cs">
       <DependentUpon>Search.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Agency.resx">
+      <DependentUpon>Agency.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms 3\CustomerRegisterUC.resx">
       <DependentUpon>CustomerRegisterUC.cs</DependentUpon>
     </EmbeddedResource>
@@ -306,7 +315,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Images\icoAgency.ico" />
     <Content Include="Images\icoDemonstracaoKey.ico" />
+    <Content Include="Images\imgAgency.png" />
     <Content Include="Images\imgCleanBar.png" />
     <Content Include="Images\imgDeleteBar.png" />
     <Content Include="Images\imgDemonstracaoKey.png" />

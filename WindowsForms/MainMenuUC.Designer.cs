@@ -46,6 +46,7 @@ namespace WindowsForms {
       this.fecharAbaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.imlImages = new System.Windows.Forms.ImageList(this.components);
       this.tbcApplications = new System.Windows.Forms.TabControl();
+      this.agênciaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.mnuMain.SuspendLayout();
       this.SuspendLayout();
       // 
@@ -174,7 +175,8 @@ namespace WindowsForms {
       // cadastrosToolStripMenuItem
       // 
       this.cadastrosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.clienteToolStripMenuItem});
+            this.clienteToolStripMenuItem,
+            this.agênciaToolStripMenuItem});
       this.cadastrosToolStripMenuItem.Image = global::WindowsForms.Properties.Resources.imgRegister;
       this.cadastrosToolStripMenuItem.Name = "cadastrosToolStripMenuItem";
       this.cadastrosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
@@ -241,6 +243,14 @@ namespace WindowsForms {
       this.tbcApplications.TabIndex = 1;
       this.tbcApplications.MouseDown += new System.Windows.Forms.MouseEventHandler(this.tbcApplications_MouseDown);
       // 
+      // agênciaToolStripMenuItem
+      // 
+      this.agênciaToolStripMenuItem.Image = global::WindowsForms.Properties.Resources.imgAgency;
+      this.agênciaToolStripMenuItem.Name = "agênciaToolStripMenuItem";
+      this.agênciaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+      this.agênciaToolStripMenuItem.Text = "Agência";
+      this.agênciaToolStripMenuItem.Click += new System.EventHandler(this.agênciaToolStripMenuItem_Click);
+      // 
       // MainMenuUC
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -282,5 +292,6 @@ namespace WindowsForms {
     private System.Windows.Forms.ToolStripMenuItem byteBankToolStripMenuItem;
     private System.Windows.Forms.ToolStripMenuItem cadastrosToolStripMenuItem;
     private System.Windows.Forms.ToolStripMenuItem clienteToolStripMenuItem;
+    private System.Windows.Forms.ToolStripMenuItem agênciaToolStripMenuItem;
   }
 }

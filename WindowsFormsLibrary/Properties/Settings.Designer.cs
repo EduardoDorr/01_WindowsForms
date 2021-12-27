@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WindowsForms.Properties {
+namespace WindowsFormsLibrary.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
@@ -26,12 +26,22 @@ namespace WindowsForms.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\edudo\\Desktop\\Alura\\" +
-            "WindowsForm\\WindowsForms\\WindowsFormsLibrary\\Database\\DataFile.mdf;Integrated Se" +
-            "curity=True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\Database\\Data" +
+            "File.mdf;Integrated Security=True")]
         public string DataFileConnectionString {
             get {
                 return ((string)(this["DataFileConnectionString"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=EDUARDO-PC;Initial Catalog=ByteBank;Persist Security Info=True;User I" +
+            "D=sa;Password=admin123")]
+        public string ByteBankConnectionString {
+            get {
+                return ((string)(this["ByteBankConnectionString"]));
             }
         }
     }

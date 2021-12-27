@@ -327,5 +327,10 @@ namespace WindowsForms {
 
       tbcApplications.TabPages.Remove(tb);
     }
+
+    private void agênciaToolStripMenuItem_Click(object sender, EventArgs e) {
+      Agency F = new Agency();
+      F.ShowDialog();
+    }
   }
 }
